@@ -45,3 +45,6 @@ next-env.d.ts
 
 # Docker Postgres Data Mount
 pgdata
+
+# Drizzle Default Migrations folder
+drizzle
