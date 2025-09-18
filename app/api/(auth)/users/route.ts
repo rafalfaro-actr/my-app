@@ -10,5 +10,6 @@ export const GET = async () => {
         return new NextResponse(JSON.stringify(result), {status: 200})
     } catch (e){
         console.error(e)
+        return new NextResponse("Error fetching users", {status: 500})
     }
 }
