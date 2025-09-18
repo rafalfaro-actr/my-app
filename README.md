@@ -14,6 +14,15 @@ pnpm dev
 bun dev
 ```
 
+Run Migrations:
+```sh
+# Generate the empty migration sql files
+npx drizzle-kit generate
+# Apply the migration files to the database
+npx drizzle-kit migrate
+
+```
+
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
