@@ -13,3 +13,17 @@ export const GET = async () => {
         return new NextResponse("Error fetching users", {status: 500})
     }
 }
+
+export const POST = async (request: Request) => {
+    try {
+        const body = await request.json()
+        const db = await connect();
+        
+        await db.insert(users).values(body)
+
+        return new NextResponse("Inserted", {status: 201})
+    } catch (e){
+        console.error(e)
+        return new NextResponse("Error inserting users", {status: 500})
+    }
+}
