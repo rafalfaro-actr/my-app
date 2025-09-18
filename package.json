@@ -15,7 +15,6 @@
     "react-dom": "19.1.0"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "^0.3.8",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/pg": "^8.15.5",
