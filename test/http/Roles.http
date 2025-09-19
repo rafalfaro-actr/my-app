@@ -1,0 +1,39 @@
+# Install VS Code REST Client to run these requests https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+### Get Roles
+GET http://localhost:3000/api/roles
+
+
+### Create Role
+POST http://localhost:3000/api/roles HTTP/1.1
+content-type: application/json
+
+{
+    "name": "admin"
+}
+
+### Delete Role
+DELETE http://localhost:3000/api/roles?id=20f39a33-6d90-4b59-803d-3e6686c77958
+
+### Modify Role
+PATCH http://localhost:3000/api/roles HTTP/1.1
+content-type: application/json
+
+{
+    "id": "56c27001-7d5a-42a8-a309-7383dd0b9de4",
+    "name": "viewer-from-vs-code"
+}
+
+### Create Roles
+
+POST http://localhost:3000/api/roles HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "name": "viewer"
+    },
+    {
+        "name": "editor"
+    }
+]
