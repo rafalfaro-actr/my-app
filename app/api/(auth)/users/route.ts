@@ -37,10 +37,15 @@ export const POST = async (request: Request) => {
         const db = await connect();
         
         if(!Array.isArray(body)){
-            const newUser = {id: randomUUID(), name: body.name}
+            const newUser = {...body}
+            newUser.id = randomUUID()
             await db.insert(users).values(newUser)
         } else{
-            const newUsers = body.map(x => { return {id: randomUUID(), name: x.name}})
+            const newUsers = body.map(x => { 
+                const newBody = {...x}
+                newBody.id = randomUUID()
+                return newBody
+            })
             await db.insert(users).values(newUsers)
         }
         
@@ -55,13 +60,15 @@ export const POST = async (request: Request) => {
 export const PATCH = async (request: Request) => {
     try {
         const body = await request.json()
-        const {id, name} = body
 
         const db = await connect();
         // TODO: Validations
+        const newBody = {...body}
+        delete newBody.id
+
         const updatedUser = await db.update(users)
-            .set({ name: name })
-            .where(eq(users.id, id))
+            .set(newBody)
+            .where(eq(users.id, body.id))
             .returning();
 
         return new NextResponse("Updated: " + JSON.stringify(updatedUser), {status: 200})
