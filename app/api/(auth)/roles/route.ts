@@ -25,6 +25,27 @@ export const GET = async () => {
     }
 }
 
+/**
+ * @swagger
+ * /api/roles:
+ *   post:
+ *     description: Create roles
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *           examples:
+ *             one:
+ *               value:
+ *                 {"name": "admin"}          
+ *             many:
+ *               value:
+ *                 [{"name": "admin"},{"name": "visitor"}]
+ *     responses:
+ *       201:
+ *         description: Role Created!
+ */
 export const POST = async (request: Request) => {
     try {
         const body = await request.json()
@@ -72,6 +93,21 @@ export const PATCH = async (request: Request) => {
     }
 }
 
+/**
+ * @swagger
+ * /api/roles:
+ *   delete:
+ *     description: Delete role    
+ *     parameters:
+ *       - name: id
+ *         in: query
+ *         examples:
+ *           uuid:
+ *             value: 08a91dc8-4d19-4c10-9436-c7d9265dbba1
+ *     responses:
+ *       200:
+ *         description: Role Deleted!
+ */
 export const DELETE = async (request: Request) => {
     try {
         const { searchParams } = new URL(request.url)
