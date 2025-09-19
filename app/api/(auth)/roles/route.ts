@@ -63,11 +63,11 @@ export const DELETE = async (request: Request) => {
 
         const db = await connect();
         // TODO: Validations
-        const deletedCar = await db.delete(roles)
+        const deletedRole = await db.delete(roles)
             .where(eq(roles.id, id))
             .returning();
 
-        return new NextResponse("Deleted: " + JSON.stringify(deletedCar), {status: 200})
+        return new NextResponse("Deleted: " + JSON.stringify(deletedRole), {status: 200})
     } catch (e){
         console.error(e)
         return new NextResponse("Error deleting roles: " + e, {status: 500})

@@ -1,0 +1,43 @@
+# Install VS Code REST Client to run these requests https://marketplace.visualstudio.com/items?itemName=humao.rest-client
+
+### Get Memberships
+GET http://localhost:3000/api/memberships
+
+
+### Create Membership
+POST http://localhost:3000/api/memberships HTTP/1.1
+content-type: application/json
+
+{
+    "userId": "6fdd3e02-422a-43c7-845e-4e378990517b",
+    "roleId": "de310456-d81c-4055-955d-cdf490b2df85"
+}
+
+### Delete Membership
+DELETE http://localhost:3000/api/memberships?id=0e3fda3a-3e4c-4d40-982e-41d892fdbd34
+
+### Modify Membership
+PATCH http://localhost:3000/api/memberships HTTP/1.1
+content-type: application/json
+
+{
+    "id": "1531a544-679f-4889-835c-742883985977",
+    "userId": "0ae4d9e4-941e-44e0-a8b9-89a3d0253cb1",
+    "roleId": "34e32bf5-ada2-4cdf-adc5-09dc84c558f8"
+}
+
+### Create Memberships
+
+POST http://localhost:3000/api/memberships HTTP/1.1
+content-type: application/json
+
+[
+    {
+        "userId": "6fdd3e02-422a-43c7-845e-4e378990517b",
+        "roleId": "de310456-d81c-4055-955d-cdf490b2df85"
+    },
+    {
+        "userId": "6fdd3e02-422a-43c7-845e-4e378990517b",
+        "roleId": "de310456-d81c-4055-955d-cdf490b2df85"
+    }
+]
