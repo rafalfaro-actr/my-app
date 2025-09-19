@@ -7,7 +7,7 @@ import { NextResponse } from "next/server";
 export const GET = async () => {
     try {
         const db = await connect();
-        const result = await db.select().from(roles);
+        const result = await db.query.roles.findMany();
 
         return new NextResponse(JSON.stringify(result), {status: 200})
     } catch (e){
