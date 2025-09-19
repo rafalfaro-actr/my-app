@@ -10,8 +10,15 @@ export const GET = async () => {
         const result = await db.query.users.findMany({
             with: {
                 memberships: {
-                    with: {
+                    columns: {
                         roleId: true
+                    },
+                    with: {
+                        roleId: {
+                            columns: {
+                                name: true
+                            }
+                        }
                     }
                 }
             }
