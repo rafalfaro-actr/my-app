@@ -48,7 +48,7 @@ export const GET = async () => {
  *               value:
  *                 [{"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"},{"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"}]
  *     responses:
- *       200:
+ *       201:
  *         description: Membership Created!
  */
 export const POST = async (request: Request) => {
@@ -77,6 +77,24 @@ export const POST = async (request: Request) => {
     }
 }
 
+/**
+ * @swagger
+ * /api/memberships:
+ *   patch:
+ *     description: Modify membership
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *           examples:
+ *             one:
+ *               value:
+ *                 {"id": "1531a544-679f-4889-835c-742883985977", "userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"}            
+ *     responses:
+ *       201:
+ *         description: Membership Created!
+ */
 export const PATCH = async (request: Request) => {
     try {
         const body = await request.json()
