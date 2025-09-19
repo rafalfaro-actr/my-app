@@ -9,7 +9,11 @@ export const GET = async () => {
         const db = await connect();
         const result = await db.query.users.findMany({
             with: {
-                memberships: true
+                memberships: {
+                    with: {
+                        roleId: true
+                    }
+                }
             }
         });
 
