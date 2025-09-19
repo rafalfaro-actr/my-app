@@ -4,6 +4,15 @@ import { randomUUID } from "crypto";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
+/**
+ * @swagger
+ * /api/users:
+ *   get:
+ *     description: Returns the users
+ *     responses:
+ *       200:
+ *         description: Users!
+ */
 export const GET = async () => {
     try {
         const db = await connect();

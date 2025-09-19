@@ -4,6 +4,15 @@ import { randomUUID } from "crypto";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
+/**
+ * @swagger
+ * /api/memberships:
+ *   get:
+ *     description: Returns the memberships
+ *     responses:
+ *       200:
+ *         description: Memberships!
+ */
 export const GET = async () => {
     try {
         const db = await connect();
@@ -21,6 +30,27 @@ export const GET = async () => {
     }
 }
 
+/**
+ * @swagger
+ * /api/memberships:
+ *   post:
+ *     description: Create memberships
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *           examples:
+ *             one:
+ *               value:
+ *                 {"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"}            
+ *             many:
+ *               value:
+ *                 [{"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"},{"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"}]
+ *     responses:
+ *       201:
+ *         description: Membership Created!
+ */
 export const POST = async (request: Request) => {
     try {
         const body = await request.json()
@@ -47,6 +77,24 @@ export const POST = async (request: Request) => {
     }
 }
 
+/**
+ * @swagger
+ * /api/memberships:
+ *   patch:
+ *     description: Modify membership
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *           examples:
+ *             one:
+ *               value:
+ *                 {"id": "1531a544-679f-4889-835c-742883985977", "userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"}            
+ *     responses:
+ *       200:
+ *         description: Membership Modified!
+ */
 export const PATCH = async (request: Request) => {
     try {
         const body = await request.json()
@@ -67,6 +115,21 @@ export const PATCH = async (request: Request) => {
     }
 }
 
+/**
+ * @swagger
+ * /api/memberships:
+ *   delete:
+ *     description: Delete membership    
+ *     parameters:
+ *       - name: id
+ *         in: query
+ *         examples:
+ *           uuid:
+ *             value: 433da309-baad-46cc-ae1b-0e4a2aa36962
+ *     responses:
+ *       200:
+ *         description: Membership Deleted!
+ */
 export const DELETE = async (request: Request) => {
     try {
         const { searchParams } = new URL(request.url)
