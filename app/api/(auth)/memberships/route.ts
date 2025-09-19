@@ -7,7 +7,12 @@ import { NextResponse } from "next/server";
 export const GET = async () => {
     try {
         const db = await connect();
-        const result = await db.select().from(memberships);
+        const result = await db.query.memberships.findMany({
+            with: {
+                userId: true,
+                roleId: true
+            }
+        });
 
         return new NextResponse(JSON.stringify(result), {status: 200})
     } catch (e){
