@@ -55,13 +55,12 @@ export const POST = async (request: Request) => {
 export const PATCH = async (request: Request) => {
     try {
         const body = await request.json()
-        const {id, name} = body
 
         const db = await connect();
         // TODO: Validations
         const newBody = {...body}
         delete newBody.id
-        
+
         const updatedUser = await db.update(users)
             .set(newBody)
             .where(eq(users.id, body.id))
