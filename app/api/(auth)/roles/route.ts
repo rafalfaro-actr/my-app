@@ -40,13 +40,15 @@ export const POST = async (request: Request) => {
 export const PATCH = async (request: Request) => {
     try {
         const body = await request.json()
-        const {id, name} = body
 
         const db = await connect();
         // TODO: Validations
+        const newBody = {...body}
+        delete newBody.id
+
         const updatedRole = await db.update(roles)
-            .set({ name: name })
-            .where(eq(roles.id, id))
+            .set(newBody)
+            .where(eq(roles.id, body.id))
             .returning();
 
         return new NextResponse("Updated: " + JSON.stringify(updatedRole), {status: 200})
