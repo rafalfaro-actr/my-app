@@ -8,6 +8,8 @@ import { NextResponse } from "next/server";
  * @swagger
  * /api/roles:
  *   get:
+ *     tags:
+ *       - role
  *     description: Returns the roles
  *     responses:
  *       200:
@@ -29,6 +31,8 @@ export const GET = async () => {
  * @swagger
  * /api/roles:
  *   post:
+ *     tags:
+ *       - role
  *     description: Create roles
  *     requestBody:
  *       content:
@@ -76,6 +80,8 @@ export const POST = async (request: Request) => {
  * @swagger
  * /api/roles:
  *   patch:
+ *     tags:
+ *       - role
  *     description: Modify role
  *     requestBody:
  *       content:
@@ -115,6 +121,8 @@ export const PATCH = async (request: Request) => {
  * @swagger
  * /api/roles:
  *   delete:
+ *     tags:
+ *       - role
  *     description: Delete role    
  *     parameters:
  *       - name: id

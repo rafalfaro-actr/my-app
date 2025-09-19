@@ -8,6 +8,8 @@ import { NextResponse } from "next/server";
  * @swagger
  * /api/memberships:
  *   get:
+ *     tags:
+ *       - membership
  *     description: Returns the memberships
  *     responses:
  *       200:
@@ -34,6 +36,8 @@ export const GET = async () => {
  * @swagger
  * /api/memberships:
  *   post:
+ *     tags:
+ *       - membership
  *     description: Create memberships
  *     requestBody:
  *       content:
@@ -81,6 +85,8 @@ export const POST = async (request: Request) => {
  * @swagger
  * /api/memberships:
  *   patch:
+ *     tags:
+ *       - membership
  *     description: Modify membership
  *     requestBody:
  *       content:
@@ -119,6 +125,8 @@ export const PATCH = async (request: Request) => {
  * @swagger
  * /api/memberships:
  *   delete:
+ *     tags:
+ *       - membership
  *     description: Delete membership    
  *     parameters:
  *       - name: id
