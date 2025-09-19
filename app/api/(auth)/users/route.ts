@@ -59,9 +59,12 @@ export const PATCH = async (request: Request) => {
 
         const db = await connect();
         // TODO: Validations
+        const newBody = {...body}
+        delete newBody.id
+        
         const updatedUser = await db.update(users)
-            .set({ name: name })
-            .where(eq(users.id, id))
+            .set(newBody)
+            .where(eq(users.id, body.id))
             .returning();
 
         return new NextResponse("Updated: " + JSON.stringify(updatedUser), {status: 200})
