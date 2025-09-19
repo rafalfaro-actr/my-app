@@ -8,6 +8,8 @@ import { NextResponse } from "next/server";
  * @swagger
  * /api/users:
  *   get:
+ *     tags:
+ *       - user
  *     description: Returns the users
  *     responses:
  *       200:
@@ -44,6 +46,8 @@ export const GET = async () => {
  * @swagger
  * /api/users:
  *   post:
+ *     tags:
+ *       - user
  *     description: Create users
  *     requestBody:
  *       content:
@@ -91,6 +95,8 @@ export const POST = async (request: Request) => {
  * @swagger
  * /api/users:
  *   patch:
+ *     tags:
+ *       - user
  *     description: Modify user
  *     requestBody:
  *       content:
@@ -130,6 +136,8 @@ export const PATCH = async (request: Request) => {
  * @swagger
  * /api/users:
  *   delete:
+ *     tags:
+ *       - user
  *     description: Delete user    
  *     parameters:
  *       - name: id
