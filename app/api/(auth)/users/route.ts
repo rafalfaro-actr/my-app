@@ -37,10 +37,15 @@ export const POST = async (request: Request) => {
         const db = await connect();
         
         if(!Array.isArray(body)){
-            const newUser = {id: randomUUID(), name: body.name}
+            const newUser = {...body}
+            newUser.id = randomUUID()
             await db.insert(users).values(newUser)
         } else{
-            const newUsers = body.map(x => { return {id: randomUUID(), name: x.name}})
+            const newUsers = body.map(x => { 
+                const newBody = {...x}
+                newBody.id = randomUUID()
+                return newBody
+            })
             await db.insert(users).values(newUsers)
         }
         
