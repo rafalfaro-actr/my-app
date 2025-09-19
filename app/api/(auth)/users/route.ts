@@ -44,6 +44,24 @@ export const PATCH = async (request: Request) => {
         return new NextResponse("Updated: " + JSON.stringify(updatedUser), {status: 200})
     } catch (e){
         console.error(e)
-        return new NextResponse("Error inserting users", {status: 500})
+        return new NextResponse("Error modifying users", {status: 500})
+    }
+}
+
+export const DELETE = async (request: Request) => {
+    try {
+        const { searchParams } = new URL(request.url)
+        const id = searchParams.get("id")!
+
+        const db = await connect();
+        // TODO: Validations
+        const deletedCar = await db.delete(users)
+            .where(eq(users.id, id))
+            .returning();
+
+        return new NextResponse("Deleted: " + JSON.stringify(deletedCar), {status: 200})
+    } catch (e){
+        console.error(e)
+        return new NextResponse("Error deleting users", {status: 500})
     }
 }
