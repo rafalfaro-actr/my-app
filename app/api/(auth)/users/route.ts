@@ -12,7 +12,7 @@ export const GET = async () => {
         return new NextResponse(JSON.stringify(result), {status: 200})
     } catch (e){
         console.error(e)
-        return new NextResponse("Error fetching users", {status: 500})
+        return new NextResponse("Error fetching users: " + e, {status: 500})
     }
 }
 
@@ -33,7 +33,7 @@ export const POST = async (request: Request) => {
         return new NextResponse("Inserted: " + JSON.stringify(body), {status: 201})
     } catch (e){
         console.error(e)
-        return new NextResponse("Error inserting users", {status: 500})
+        return new NextResponse("Error inserting users: " + e, {status: 500})
     }
 }
 
@@ -52,7 +52,7 @@ export const PATCH = async (request: Request) => {
         return new NextResponse("Updated: " + JSON.stringify(updatedUser), {status: 200})
     } catch (e){
         console.error(e)
-        return new NextResponse("Error modifying users", {status: 500})
+        return new NextResponse("Error modifying users: " + e, {status: 500})
     }
 }
 
@@ -70,6 +70,6 @@ export const DELETE = async (request: Request) => {
         return new NextResponse("Deleted: " + JSON.stringify(deletedCar), {status: 200})
     } catch (e){
         console.error(e)
-        return new NextResponse("Error deleting users", {status: 500})
+        return new NextResponse("Error deleting users: " + e, {status: 500})
     }
 }
