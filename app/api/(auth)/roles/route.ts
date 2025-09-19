@@ -72,6 +72,24 @@ export const POST = async (request: Request) => {
     }
 }
 
+/**
+ * @swagger
+ * /api/roles:
+ *   patch:
+ *     description: Modify role
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *           examples:
+ *             one:
+ *               value:
+ *                 {"id": "de310456-d81c-4055-955d-cdf490b2df85", "name": "admin"}            
+ *     responses:
+ *       200:
+ *         description: Role Modified!
+ */
 export const PATCH = async (request: Request) => {
     try {
         const body = await request.json()
