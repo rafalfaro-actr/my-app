@@ -30,6 +30,27 @@ export const GET = async () => {
     }
 }
 
+/**
+ * @swagger
+ * /api/memberships:
+ *   post:
+ *     description: Create memberships
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *           examples:
+ *             one:
+ *               value:
+ *                 {"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"}            
+ *             many:
+ *               value:
+ *                 [{"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"},{"userId": "6fdd3e02-422a-43c7-845e-4e378990517b", "roleId": "de310456-d81c-4055-955d-cdf490b2df85"}]
+ *     responses:
+ *       200:
+ *         description: Membership Created!
+ */
 export const POST = async (request: Request) => {
     try {
         const body = await request.json()
