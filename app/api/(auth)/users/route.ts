@@ -1,5 +1,6 @@
 import { connect } from "@/lib/db"
 import { users } from "@/lib/models/user"
+import { randomUUID } from "crypto";
 import { eq } from "drizzle-orm";
 import { NextResponse } from "next/server";
 
@@ -20,7 +21,14 @@ export const POST = async (request: Request) => {
         const body = await request.json()
         const db = await connect();
         
-        await db.insert(users).values(body)
+        if(!Array.isArray(body)){
+            const newUser = {id: randomUUID(), name: body.name}
+            await db.insert(users).values(newUser)
+        } else{
+            const newUsers = body.map(x => { return {id: randomUUID(), name: x.name}})
+            await db.insert(users).values(newUsers)
+        }
+        
 
         return new NextResponse("Inserted: " + JSON.stringify(body), {status: 201})
     } catch (e){
